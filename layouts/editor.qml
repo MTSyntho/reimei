@@ -3,7 +3,6 @@ import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 1.15
 import QtGraphicalEffects 1.12
-import "components"
 
 
 Window {
@@ -11,19 +10,19 @@ Window {
 	title: "Reimei Editor"
 	visible: true
 	width: 1280
-	height: 720
-	x: ( screen.width / 2 ) - ( width / 2 )
-	y: ( screen.height / 2 ) - ( height / 2 )
+	height: 700
+	minimumWidth: 800
 	color: "#252525"
 
-    // FontLoader { 
-    //     id: InstrumentSans 
-    //     source: "../assets/fonts/InstrumentSans/InstrumentSans-VariableFont_wdth,wght.ttf" 
-    // }
-    // FontLoader { 
-    //     id: PlusJakarta 
-    //     source: "../assets/fonts/PlusJakartaSans/PlusJakartaSans-VariableFont_wght.ttf" 
-    // }
+    FontLoader { 
+        id: instrumentSans
+        source: "../assets/fonts/InstrumentSans/InstrumentSans-VariableFont_wdth,wght.ttf" 
+    }
+
+    FontLoader { 
+        id: plusJakarta
+        source: "../assets/fonts/PlusJakartaSans/PlusJakartaSans-VariableFont_wght.ttf" 
+    }  
 
 	Rectangle {
 		id: "titlebar"
@@ -32,11 +31,6 @@ Window {
 		color: "#01FF0000"
 		border.width: 1
 		border.color: "#0fffffff"
-
-	    FontLoader { 
-	        name: InstrumentSans 
-	        source: "../assets/fonts/InstrumentSans/static/InstrumentSans-Regular.ttf" 
-	    }
 
 	    Row {
 	    	width: 85 - 16
@@ -48,6 +42,7 @@ Window {
 	    		text: "Reimei"
 	    		color: "#ffffff"
 	    		font.pixelSize: 12
+	    		font.family: instrumentSans.name
 				anchors.verticalCenter: parent.verticalCenter
 	    	}
 	    }
@@ -75,6 +70,7 @@ Window {
 	    			text: "File"
 	    			color: "#ffffff"
 	    			font.pixelSize: 12
+	    			font.family: plusJakarta.name
 					anchors.verticalCenter: parent.verticalCenter
 					anchors.horizontalCenter: parent.horizontalCenter
 	    		}
@@ -89,6 +85,7 @@ Window {
 	    			text: "Edit"
 	    			color: "#ffffff"
 	    			font.pixelSize: 12
+	    			font.family: plusJakarta.name
 					anchors.verticalCenter: parent.verticalCenter
 					anchors.horizontalCenter: parent.horizontalCenter
 	    		}
@@ -103,6 +100,7 @@ Window {
 	    			text: "View"
 	    			color: "#ffffff"
 	    			font.pixelSize: 12
+	    			font.family: plusJakarta.name
 					anchors.verticalCenter: parent.verticalCenter
 					anchors.horizontalCenter: parent.horizontalCenter
 	    		}
@@ -113,7 +111,7 @@ Window {
 			text: "Project Name"
 			color: "#ffffff"
 			font.pixelSize: 12
-			font.family: InstrumentSans.name
+			font.family: instrumentSans.name
 			anchors.verticalCenter: parent.verticalCenter
 			anchors.horizontalCenter: parent.horizontalCenter
 		}
@@ -122,6 +120,7 @@ Window {
 			text: "Last save was at 25:00"
 			color: "#2Dffffff"
 			font.pixelSize: 10
+			font.family: plusJakarta.name
 			font.weight: Font.ExtraLight
 			font.italic: true
 			horizontalAlignment: Text.AlignRight
@@ -129,5 +128,109 @@ Window {
 			x: parent.width - width - 120
 			anchors.verticalCenter: parent.verticalCenter
 		}
+
+		Rectangle {
+			width: 90
+			height: parent.height
+	    	color: "#0Cffffff"
+	    	x: parent.width - width
+
+	    	Row {
+	    		spacing: 4
+					anchors.verticalCenter: parent.verticalCenter
+					anchors.horizontalCenter: parent.horizontalCenter
+
+		    	Text {
+		    		text: "Export"
+		    		color: "#ffffff"
+		    		font.pixelSize: 12
+		    		font.family: plusJakarta.name
+		    	}
+
+		    	Image {
+		    		width: 16
+		    		height: 16
+		    		source: "../assets/icons/export.svg"
+		    	}
+		    }
+		}
 	}
+
+	// RowLayout {
+	SplitView {
+		width: parent.width
+		height: parent.height - 35
+		y: 35
+		spacing: 0
+		orientation: Qt.Vertical
+
+		handle: Rectangle {
+			implicitHeight: 5
+			width: parent.width
+			color: "#00000000"
+		}
+
+		SplitView {
+			id: panelParent
+			width: parent.width
+				SplitView.fillHeight: true
+
+			height: parent.height / 2 - 20
+			// y: 35
+			spacing: 0
+			orientation: Qt.Horizontal
+
+			handle: Rectangle {
+				implicitWidth: 10
+				height: parent.height
+				color: "#00000000"
+			}
+
+			Rectangle {
+				// SplitView.fillWidth: true
+				SplitView.fillHeight: true
+				SplitView.minimumWidth: 300
+				color: "#00000000"
+
+				Rectangle { width: 1; height: parent.height; color: "#0fffffff"; x: parent.width + 10 } 
+
+			}
+
+
+			Rectangle {
+				SplitView.fillWidth: true
+				SplitView.fillHeight: true
+				SplitView.preferredWidth: 2
+				color: "#00000000"
+				border.width: 1
+				border.color: "#01ffffff"
+
+			    gradient: Gradient {
+			        GradientStop { position: 0.0; color: "#00000000" }
+			        GradientStop { position: 1.0; color: "#26000000" }
+			    }
+
+			}
+
+			Rectangle {
+				// SplitView.fillWidth: true
+				SplitView.fillHeight: true
+				SplitView.minimumWidth: 300
+				color: "#00000000"
+
+				Rectangle { width: 1; height: parent.height; color: "#0fffffff"; x: -10 } 
+
+			}
+		}
+
+		Rectangle {
+			SplitView.fillWidth: true
+			height: 20
+			color: "#00000000"
+
+			Rectangle { width: parent.width; height: 1; color: "#0fffffff"; y: -5 } 
+
+		}
+	}
+
 }

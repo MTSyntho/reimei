@@ -16,12 +16,12 @@ Window {
 
     FontLoader { 
         id: instrumentSans
-        source: "../assets/fonts/InstrumentSans/InstrumentSans-VariableFont_wdth,wght.ttf" 
+        source: "../../assets/fonts/InstrumentSans/InstrumentSans-VariableFont_wdth,wght.ttf" 
     }
 
     FontLoader { 
         id: plusJakarta
-        source: "../assets/fonts/PlusJakartaSans/PlusJakartaSans-VariableFont_wght.ttf" 
+        source: "../../assets/fonts/PlusJakartaSans/PlusJakartaSans-VariableFont_wght.ttf" 
     }  
 
 	Rectangle {
@@ -150,7 +150,7 @@ Window {
 		    	Image {
 		    		width: 16
 		    		height: 16
-		    		source: "../assets/icons/export.svg"
+		    		source: "../../assets/icons/export.svg"
 		    	}
 		    }
 		}
@@ -225,10 +225,13 @@ Window {
 
 		Rectangle {
 			SplitView.fillWidth: true
-			height: 20
+			SplitView.minimumHeight: 20
+
 			color: "#00000000"
 
 			Rectangle { width: parent.width; height: 1; color: "#0fffffff"; y: -5 } 
+
+			Timeline {}
 
 		}
 	}

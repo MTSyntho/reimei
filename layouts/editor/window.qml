@@ -262,7 +262,7 @@ Window {
 
 		Rectangle {
 			SplitView.fillWidth: true
-			SplitView.minimumHeight: 20
+			SplitView.minimumHeight: 35
 
 			color: "#00000000"
 

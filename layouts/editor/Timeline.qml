@@ -32,6 +32,10 @@ Rectangle {
 				from: 0.5
 				value: 1
 				to: 5
+
+				onPressedChanged: {
+					if (!pressed) { timeRuler.requestPaint() }
+				}
 			}
 		}
 
@@ -50,8 +54,10 @@ Rectangle {
 				// contentWidth: childrenRect.width
 				contentWidth: ( ( projectLength + 2 ) * clipLength ) * zoom // 10 seconds
 
+				TimeRuler { id: timeRuler }
+
 				Column {
-					y: 4
+					y: 4 + 20
 					id: timelineColumn
 					width: parent.width
 					spacing: 4

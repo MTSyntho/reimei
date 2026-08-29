@@ -10,8 +10,12 @@ Rectangle {
 	height: parent.height
 	color: "#00000000"
 
-	property var clipLength: 80 // Length of clip for 1 second of time
-	property var zoom: zoomSlider.value
+	readonly property var clipLength: 80 // Length of clip for 1 second of time
+	readonly property real zoom: zoomSlider.value
+	property real projectLength: 0
+
+	Component { id: trackDataPlaceholder ; ListModel {} }
+	Component { id: trackPlaceholder ; Track {} }
 
 	Column {
 		width: parent.width
@@ -24,9 +28,10 @@ Rectangle {
 
 			Slider {
 				id: zoomSlider
-			    from: 0.5
-			    value: 1
-			    to: 5
+				width: 250
+				from: 0.5
+				value: 1
+				to: 5
 			}
 		}
 
@@ -38,43 +43,59 @@ Rectangle {
 			height: parent.height - 36
 
 			Flickable {
+				id: timelineViewport
 				width: parent.width
 				height: parent.height
 
 				// contentWidth: childrenRect.width
-				contentWidth: ( 20 * clipLength ) * zoom // 10 seconds
+				contentWidth: ( ( projectLength + 2 ) * clipLength ) * zoom // 10 seconds
 
-				ListModel {
-					id: clipData
-
-			  		ListElement {
-						clipName: "Clip1.mp4"
-						clipPosition: 0.4
-						clipDuration: 3
-					}
-
-
-			  		ListElement {
-						clipName: "Clip the second coming.mp4"
-						clipPosition: 12
-						clipDuration: 7
-					}
+				Column {
+					y: 4
+					id: timelineColumn
+					width: parent.width
+					spacing: 4
+					height: childrenRect.height + 85
 				}
 
-			  	Column {
-			  		Item {
-				  		Repeater {
-				  			model: clipData
+				ScrollBar.horizontal: ScrollBar {
+					policy: ScrollBar.AlwaysOn
+				}
 
-				  			delegate: Clip { name: clipName; position: clipPosition; duration: clipDuration }
-				  		}			  			
-			  		}
-
-			  	}
+				ScrollBar.vertical: ScrollBar {
+					policy: ScrollBar.AlwaysOn
+				}
 			}
 	
 		}
 
 	}
+
+	Component.onCompleted: {
+		var projectData = JSON.parse(dummyData);
+		var longestEndTime = 0;
+		// dummyData.forEach(function(index) {
+
+		// })
+
+		for (var i = 0; i < projectData.tracks.length; i++)  {
+			var track = trackPlaceholder.createObject(timelineColumn);
+			var trackData = projectData.tracks[i];
+
+
+		    for (var l = 0; l < trackData.length; l++) {
+		        var clip = trackData[l]
+		        var endTime = clip.clipPosition + clip.clipDuration
+
+		        if (endTime > longestEndTime)
+		            longestEndTime = endTime
+		    }
+
+			track.load(trackData);
+		}
+
+	    projectLength = longestEndTime;
+
+	}	
 
 }

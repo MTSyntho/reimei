@@ -14,6 +14,33 @@ Window {
 	minimumWidth: 800
 	color: "#252525"
 
+	readonly property var dummyData: '
+		{
+			"name": "Dummy Project",  
+			"lastSave": "25:00",
+			"tracks": [
+				[
+					{
+						"clipName": "Clip1.mp4",
+						"clipPosition": 0.4,
+						"clipDuration": 3
+				  	},
+					{
+						"clipName": "Clip the second coming.mp4",
+						"clipPosition": 12,
+						"clipDuration": 7
+				  	}
+				],
+				[
+					{
+						"clipName": "osu.mp4",
+						"clipPosition": 3.5,
+						"clipDuration": 13
+					}
+				]
+			]
+		}'
+
     FontLoader { 
         id: instrumentSans
         source: "../../assets/fonts/InstrumentSans/InstrumentSans-VariableFont_wdth,wght.ttf" 
@@ -114,10 +141,15 @@ Window {
 			font.family: instrumentSans.name
 			anchors.verticalCenter: parent.verticalCenter
 			anchors.horizontalCenter: parent.horizontalCenter
+
+			Component.onCompleted: {
+				var projectData = JSON.parse(dummyData);
+				text = projectData.name;
+			}	
 		}
 
 		Text {
-			text: "Last save was at 25:00"
+			text: "Last save was @ 25:00"
 			color: "#2Dffffff"
 			font.pixelSize: 10
 			font.family: plusJakarta.name
@@ -127,6 +159,11 @@ Window {
 			width: 170
 			x: parent.width - width - 120
 			anchors.verticalCenter: parent.verticalCenter
+
+			Component.onCompleted: {
+				var projectData = JSON.parse(dummyData);
+				text = "Last save was @ " + projectData.lastSave ;
+			}	
 		}
 
 		Rectangle {
@@ -235,5 +272,6 @@ Window {
 
 		}
 	}
+
 
 }

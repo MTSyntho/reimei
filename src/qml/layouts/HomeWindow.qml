@@ -4,9 +4,10 @@ import QtQuick.Window
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import "." 1.0
+import "editor"
 
 Window {
-	id: window
+	id: mainWindow
 	title: "Reimei Editor"
 	visible: true
 	width: 960
@@ -14,6 +15,11 @@ Window {
 	color: Reimei.backgroundColor
 
 	// LoadFonts {}
+
+	Component {
+		id: editorWindow
+		EditorWindow {}
+	}
 
     FontLoader { 
         id: instrumentSans

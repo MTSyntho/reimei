@@ -5,13 +5,24 @@ import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import "." 1.0
 
-Item {
+Button {
 	property string name: "Project Name"
 	property string time: "25:00"
 	property string preview
 
 	width: parent.width
 	height: parent.height
+
+	background: Rectangle {
+		width: parent.width
+		height: parent.height
+		color: "#00ffffff"
+	}
+
+	onClicked: {
+		editorWindow.createObject().show()
+		mainWindow.close()
+	}
 
 
 	Column {

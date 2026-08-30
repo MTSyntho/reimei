@@ -9,7 +9,6 @@ Column {
 	property var name
 	property var type
 	property var preview
-
 	spacing: 8
 
 	Image {
@@ -17,7 +16,16 @@ Column {
 		width: mask.width - 2
 		height: mask.height - 2
 		fillMode: Image.PreserveAspectCrop
+		source: preview
 		visible: false
+
+		Image {
+			anchors.right: parent.right
+			anchors.top: parent.top
+			source: "../../../assets/assetLibrary/" + type + "Overlay.png"
+			width: 57
+			height: 57
+		}
 	}
 
 	Rectangle {
@@ -30,9 +38,14 @@ Column {
 		border.width: 1
 		anchors.horizontalCenter: parent.horizontalCenter
 
+		gradient: Gradient {
+	        GradientStop { position: 0.0; color: "#202020" }
+	        GradientStop { position: 1.0; color: "#000000" }
+	    }
+
 		OpacityMask {
-			width: 146
-			height: 162
+			width: parent.width
+			height: parent.height
 			source: previewSrc
 			maskSource: mask
 		}

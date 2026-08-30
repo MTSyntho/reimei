@@ -18,6 +18,7 @@ Column {
 		Row {
 			spacing: 10
 			height: 15
+			x: 10
 			anchors.verticalCenter: parent.verticalCenter
 
 
@@ -29,6 +30,7 @@ Column {
 
 			Text {
 				text: "Master > gameplay clips > day1"
+				font.family: plusJakarta.name
 				color: "#ffffff"
 				font.pixelSize: 12
 			}

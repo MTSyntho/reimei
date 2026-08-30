@@ -11,7 +11,12 @@ Row {
 	Button {
 		width: 16
 		height: 10
+		focusPolicy: Qt.NoFocus
 		anchors.verticalCenter: parent.verticalCenter
+
+		onPressed: {
+			playbackState.skipBack()
+		}
 
 		background: Rectangle {
 			width: parent.width
@@ -30,6 +35,11 @@ Row {
 	Button {
 		width: 15
 		height: 13
+		focusPolicy: Qt.NoFocus
+
+		onPressed: {
+			playbackState.backFrame()
+		}
 
 		background: Rectangle {
 			width: parent.width
@@ -48,6 +58,8 @@ Row {
 	Button {
 		width: 11
 		height: 13
+		focusPolicy: Qt.NoFocus
+		checkable: true
 
 		background: Rectangle {
 			width: parent.width
@@ -55,17 +67,31 @@ Row {
 			color: "#00ffffff"
 		}
 
+		onCheckedChanged: {
+			if (checked) {
+				playbackState.play()
+			} else {
+				playbackState.pause()
+			}
+
+		}
+
 		Image {
             anchors.centerIn: parent
             width: parent.width
             height: parent.height
-            source: "../../../assets/playbackControls/play.svg"
+            source: isPlaying ? "../../../assets/playbackControls/pause.svg" : "../../../assets/playbackControls/play.svg" 
         }
 	}
 	
 	Button {
 		width: 15
 		height: 13
+		focusPolicy: Qt.NoFocus
+
+		onPressed: {
+			playbackState.forwardFrame()
+		}
 
 		background: Rectangle {
 			width: parent.width
@@ -84,7 +110,12 @@ Row {
 	Button {
 		width: 16
 		height: 10
+		focusPolicy: Qt.NoFocus
 		anchors.verticalCenter: parent.verticalCenter
+
+		onPressed: {
+			playbackState.skipForward()
+		}
 
 		background: Rectangle {
 			width: parent.width

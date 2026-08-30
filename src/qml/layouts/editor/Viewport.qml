@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import "Viewport"
+import "../." 1.0
 
 Column {
 	width: parent.width
@@ -23,20 +24,15 @@ Column {
 	Slider {
 		id: videoProgressbar
 		from: 0
-		value: 80
-		to: 100
+		value: Global.currentTime
+		to: Global.projectLength
+
 		width: parent.width * 0.86
 		anchors.horizontalCenter: parent.horizontalCenter
 
-		// onHoveredChanged: {
-		// 	if (hovered) {
-		// 		videoProgressbarHandle.opacity = 1;
-		// 		videoProgressbarHandle.scale = 1;
-		// 	} else {
-		// 		videoProgressbarHandle.opacity = 0;
-		// 		videoProgressbarHandle.scale = 0;
-		// 	}
-		// }
+		onPositionChanged: {
+			Global.currentTime = value
+		}
 
 		background: Rectangle {
 			width: videoProgressbar.availableWidth

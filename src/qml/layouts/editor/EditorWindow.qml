@@ -15,6 +15,7 @@ Window {
 	minimumWidth: 800
 	color: Reimei.backgroundColor
 
+	property bool isPlaying: false
 	readonly property var dummyData: '
 		{
 			"name": "Dummy Project",  
@@ -51,6 +52,35 @@ Window {
         id: plusJakarta
         source: "../../assets/fonts/PlusJakartaSans/PlusJakartaSans-VariableFont_wght.ttf" 
     }  
+
+    Item {
+    	id: playbackState
+
+    	function play() {
+    		isPlaying = true;
+    	}
+
+      	function pause() {
+    		isPlaying = false;
+    	}
+
+    	function backFrame() {
+    		Global.currentTime -= ( 1 / Global.frameRate )
+    	}
+
+    	function forwardFrame() {
+    		Global.currentTime += ( 1 / Global.frameRate )
+    	}
+
+    	function skipBack() {
+    		Global.currentTime -= 3
+    	}
+
+    	function skipForward() {
+    		Global.currentTime += 3
+    	}
+
+    }
 
 	Rectangle {
 		id: "titlebar"

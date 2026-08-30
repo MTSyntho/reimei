@@ -29,4 +29,17 @@ Canvas {
 	        }    	
 	    }
     }
+
+    MouseArea {
+        anchors.fill: parent
+        preventStealing: true
+
+        onClicked: function(mouse) {
+            Global.currentTime = mouse.x / ( clipLength * zoom )
+        }
+
+        onPositionChanged: function(mouse) {
+            Global.currentTime = mouse.x / ( clipLength * zoom )
+        }
+    }
 }

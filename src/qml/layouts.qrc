@@ -4,6 +4,7 @@
         <file>layouts/HomeWindow.qml</file>
         <file>layouts/ProjectEntry.qml</file>
         <file>layouts/Theme.qml</file>
+        <file>layouts/Global.qml</file>
         <file>layouts/LoadFonts.qml</file>
         <file>layouts/qmldir</file>
         <file>layouts/editor/EditorWindow.qml</file>

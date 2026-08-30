@@ -6,16 +6,34 @@ import "Timeline"
 import "../." 1.0
 
 Rectangle {
+
 	width: parent.width
 	height: parent.height
 	color: "#00000000"
 
 	readonly property var clipLength: Reimei.clipLength
 	readonly property real zoom: zoomSlider.value
-	property real projectLength: 0
+	// property real projectLength: Global.projectLength
+	// property real currentTime: Global.currentTime
 
 	Component { id: trackDataPlaceholder ; ListModel {} }
 	Component { id: trackPlaceholder ; Track {} }
+
+	Timer {
+		id: playerHeadTimer
+		interval: ( 1 / Global.frameRate ) * 1000
+		repeat: true
+		running: isPlaying ? true : false
+
+		onTriggered: {
+			Global.currentTime += interval / 1000
+
+			if (Global.currentTime >= Global.projectLength) {
+				Global.currentTime = 0
+				isPlaying = false
+			}
+		}
+	}
 
 	Column {
 		width: parent.width
@@ -52,7 +70,7 @@ Rectangle {
 				height: parent.height
 
 				// contentWidth: childrenRect.width
-				contentWidth: ( ( projectLength + 2 ) * clipLength ) * zoom // 10 seconds
+				contentWidth: ( ( Global.projectLength + 2 ) * clipLength ) * zoom // 10 seconds
 
 				TimeRuler { id: timeRuler }
 
@@ -63,6 +81,8 @@ Rectangle {
 					spacing: 4
 					height: childrenRect.height + 85
 				}
+
+				PlayerHead { id: playerHead }
 
 				ScrollBar.horizontal: ScrollBar {
 					policy: ScrollBar.AlwaysOn
@@ -100,7 +120,7 @@ Rectangle {
 			track.load(trackData);
 		}
 
-	    projectLength = longestEndTime;
+	    Global.projectLength = longestEndTime;
 
 	}	
 

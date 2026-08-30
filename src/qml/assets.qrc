@@ -1,0 +1,23 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <file>assets/icons/pkg.svg</file>
+        <file>assets/icons/export.svg</file>
+        <file>assets/icons/settings.svg</file>
+        <file>assets/icons/save.svg</file>
+        <file>assets/icons/home.svg</file>
+        <file>assets/icons/forward.svg</file>
+        <file>assets/icons/back.svg</file>
+        <file>assets/icons/about.svg</file>
+        <file>assets/assetLibrary/audioOverlay.png</file>
+        <file>assets/assetLibrary/imageOverlay.png</file>
+        <file>assets/assetLibrary/videoOverlay.png</file>
+        <file>assets/playbackControls/fastRewind.svg</file>
+        <file>assets/playbackControls/frameBack.svg</file>
+        <file>assets/playbackControls/play.svg</file>
+        <file>assets/playbackControls/frameForward.svg</file>
+        <file>assets/playbackControls/fastForward.svg</file>
+        <file>assets/fonts/InstrumentSans/InstrumentSans-VariableFont_wdth,wght.ttf</file>
+        <file>assets/fonts/PlusJakartaSans/PlusJakartaSans-VariableFont_wght.ttf</file>
+    </qresource>
+</RCC>

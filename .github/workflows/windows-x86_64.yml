@@ -29,7 +29,8 @@ jobs:
 
       - name: Clear temporary build files
         run: |
-          rm -r target\release\build target\release\deps
+          rm -r target\release\build
+          rm -r target\release\deps
 
       - name: Upload
         uses: actions/upload-artifact@v7

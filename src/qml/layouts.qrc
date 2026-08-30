@@ -16,5 +16,6 @@
         <file>layouts/editor/Timeline/Clip.qml</file>
         <file>layouts/editor/Timeline/TimeRuler.qml</file>
         <file>layouts/editor/Timeline/Track.qml</file>
+        <file>layouts/editor/Timeline/PlayerHead.qml</file>
     </qresource>
 </RCC>

@@ -98,88 +98,71 @@ Window {
 			color: "#20ffffff"
 		}
 
-		Column {
-			x: 22
-			y: 162
-			spacing: 10
-			Layout.alignment: Qt.AlignHCenter 
-			width: 221.75
-			height: 240.67
+	ListModel {
+		id: testProject
 
-			Image {
-				id: thunbnailSrc
-				width: mask.width - 2
-				height: mask.height - 2
-				// source: "../assets/gradient.png"
-				fillMode: Image.PreserveAspectCrop
-				visible: false
-			}
-
-			Rectangle {
-				id: mask
-				width: 162
-				height: 162
-				radius: 12
-				color: "#000000"
-				border.color: "#20ffffff"
-				border.width: 1
-
-				gradient: Gradient {
-			        GradientStop { position: 0.0; color: Reimei.placeholderGradientColor1 }
-			        GradientStop { position: 1.0; color: Reimei.placeholderGradientColor2 }
-			    }
-
-				OpacityMask {
-					width: 162
-					height: 162
-					source: thunbnailSrc
-					maskSource: mask
-				}
-
-			}
-
-
-
-
-
-			Column {
-				spacing: 2
-				Text {
-					text: "Project Name"
-					width: 166
-					font.pixelSize: 14
-					font.family: plusJakarta.name
-					color: Reimei.textColor
-				}
-
-				Text {
-					text: "Last edited: 25:00"
-					width: 166
-					font.pixelSize: 12
-					color: "#21ffffff"
-					font.family: plusJakarta.name
-					font.weight: Font.Light
-					font.italic: true
-				}
-			}
-		}
+	    ListElement {
+	        projectName: "osu! gaeming!1!!"
+	        projectSaveDate: "17:39"
+	        projectPreview: ""
+	    }
+		
+	    ListElement {
+	        projectName: "pjsk project"
+	        projectSaveDate: "25:00"
+	        projectPreview: ""
+	    }
+		
+	    ListElement {
+	        projectName: "Untitled"
+	        projectSaveDate: "03:37"
+	        projectPreview: ""
+	    }
+		
+	    ListElement {
+	        projectName: "Agarishou Cover アガリ..."
+	        projectSaveDate: "Yesterday 13:58"
+	        projectPreview: ""
+	    }
+		
+	    ListElement {
+	        projectName: "friends pink sheep ig"
+	        projectSaveDate: "October 2024"
+	        projectPreview: ""
+	    }
+		
+	    ListElement {
+	        projectName: "doroc!!1!"
+	        projectSaveDate: "April 2024"
+	        projectPreview: ""
+	    }
+		
+	    ListElement {
+	        projectName: "i literally have no idea a..."
+	        projectSaveDate: "200 B.C"
+	        projectPreview: ""
+	    }
 	}
 
+		GridView {
+			model: testProject
+			x: 22 + 32
+			y: 162 + 20
+			width: parent.width - ( x * 2 )
+			height: parent.height - y
+			clip: true
 
-	// GridView {
-	// 	anchors.fill: parent
-	// 	cellWidth: 95 + 20
-	// 	cellHeight: 95 + 20
-	// 	model: apps
-	// 	// model: launcher.launch_item("vlc", "")
+			cellWidth: 221.75
+			cellHeight: 240.67
 
-	// 	delegate: ProjectIcon {
-	// 		// launcher: launcher
-	// 		launcher: window.launcherClass // weird workaround i think, to get launcher function in the element 
-	// 		name: apps[index].name
-	// 		src: apps[index].icon.toString() // src is the app icon
-	// 		path: apps[index].path
-	// 	}
-	// }
+			delegate: ProjectEntry { name: projectName ; time: projectSaveDate ; preview: projectPreview }
+
+			ScrollBar.vertical: ScrollBar {
+				policy: ScrollBar.AsNeeded
+			}
+		}
+		// ProjectEntry { name: "hi" }
+	}
+
 
 }

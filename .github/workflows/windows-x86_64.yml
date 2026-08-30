@@ -35,4 +35,4 @@ jobs:
         with:
           name: reimei-windows-x86_64
           path: target\release\
-          archive: false
+          archive: true

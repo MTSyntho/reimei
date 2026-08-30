@@ -3,13 +3,14 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import "Timeline"
+import "../." 1.0
 
 Rectangle {
 	width: parent.width
 	height: parent.height
 	color: "#00000000"
 
-	readonly property var clipLength: 80 // Length of clip for 1 second of time
+	readonly property var clipLength: Reimei.clipLength
 	readonly property real zoom: zoomSlider.value
 	property real projectLength: 0
 
@@ -21,7 +22,7 @@ Rectangle {
 		height: parent.height
 
 		Rectangle {
-			color: "#252525"
+			color: Reimei.backgroundColor
 			width: parent.width
 			height: 35
 
@@ -38,10 +39,10 @@ Rectangle {
 			}
 		}
 
-		Rectangle { width: parent.width; height: 1; color: "#0fffffff"; y: -5 } 
+		Rectangle { width: parent.width; height: 1; color: Reimei.borderColor; y: -5 } 
 
 		Rectangle {
-			color: "#1C1C1C"
+			color: Reimei.timelineColor
 			width: parent.width
 			height: parent.height - 36
 

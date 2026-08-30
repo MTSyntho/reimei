@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
+import "../../." 1.0
 
 
 Column {
@@ -39,8 +40,8 @@ Column {
 		anchors.horizontalCenter: parent.horizontalCenter
 
 		gradient: Gradient {
-	        GradientStop { position: 0.0; color: "#202020" }
-	        GradientStop { position: 1.0; color: "#000000" }
+	        GradientStop { position: 0.0; color: Reimei.placeholderGradientColor1 }
+	        GradientStop { position: 1.0; color: Reimei.placeholderGradientColor2 }
 	    }
 
 		OpacityMask {

@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
-import "."
+import "." 1.0
 
 Window {
 	id: window
@@ -11,7 +11,7 @@ Window {
 	visible: true
 	width: 960
 	height: 720
-	color: "#252525"
+	color: Reimei.backgroundColor
 
 	// LoadFonts {}
 
@@ -37,7 +37,7 @@ Window {
 			id: "titlebar"
 			width: parent.width
 			height: 35
-			color: "#01FF0000"
+			color: Reimei.titlebarColor
 			border.width: 1
 			border.color: "#0fffffff"
 
@@ -45,7 +45,7 @@ Window {
 
 			Text {
 				text: "Reimei"
-				color: "#ffffff"
+				color: Reimei.textColor
 				font.pixelSize: 12
 				font.family: instrumentSans.name
 				anchors.verticalCenter: parent.verticalCenter
@@ -60,7 +60,7 @@ Window {
 
 			Text {
 				text: "My Projects"
-				color: "#ffffff"
+				color: Reimei.textColor
 				font.pixelSize: 32
 				font.weight: Font.Bold
 				font.family: plusJakarta.name
@@ -80,7 +80,7 @@ Window {
 
 				Text {
 					text: "Create New"
-					color: "#ffffff"
+					color: Reimei.textColor
 					font.pixelSize: 10
 					font.family: plusJakarta.name
 					anchors.verticalCenter: parent.verticalCenter
@@ -124,6 +124,11 @@ Window {
 				border.color: "#20ffffff"
 				border.width: 1
 
+				gradient: Gradient {
+			        GradientStop { position: 0.0; color: Reimei.placeholderGradientColor1 }
+			        GradientStop { position: 1.0; color: Reimei.placeholderGradientColor2 }
+			    }
+
 				OpacityMask {
 					width: 162
 					height: 162
@@ -144,7 +149,7 @@ Window {
 					width: 166
 					font.pixelSize: 14
 					font.family: plusJakarta.name
-					color: "#ffffff"
+					color: Reimei.textColor
 				}
 
 				Text {

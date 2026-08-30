@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import "AssetLibrary"
+import "../." 1.0
 
 Column {
 	x: 25
@@ -31,7 +32,7 @@ Column {
 			Text {
 				text: "Master > gameplay clips > day1"
 				font.family: plusJakarta.name
-				color: "#ffffff"
+				color: Reimei.textColor
 				font.pixelSize: 12
 			}
 		}

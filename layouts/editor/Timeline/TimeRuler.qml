@@ -1,4 +1,5 @@
 import QtQuick 2.15
+import "../../." 1.0
 
 
 Canvas {
@@ -9,8 +10,8 @@ Canvas {
 
     onPaint: {
         var ctx = getContext("2d");
-        ctx.strokeStyle = "#20ffffff"
-        ctx.fillStyle = "#40ffffff"
+        ctx.strokeStyle = Reimei.timelineTimeRulerLineColor
+        ctx.fillStyle = Reimei.timelineTimeRulerTextColor
         ctx.font = "8px sans-serif"
 
         for ( var i = 0 ; i < timelineViewport.contentWidth ; i++) {

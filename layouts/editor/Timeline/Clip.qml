@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 1.15
+import "../../." 1.0
 
 Item {
 	property string name
@@ -13,13 +14,13 @@ Item {
 	height: 85
 	Rectangle {
 		anchors.fill: parent
-		color: "#252525"
+		color: Reimei.clipColor
 		radius: 6
 
 		Text {
 			text: name
-			color: "#ffffff"
-			font.pixelSize: 12
+			color: Reimei.clipTextColor
+			font.pixelSize: Reimei.clipFontSize
 			x: 4
 			y: 2
 

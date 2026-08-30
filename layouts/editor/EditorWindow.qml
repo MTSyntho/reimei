@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
+import "../." 1.0
 
 
 Window {
@@ -12,7 +13,7 @@ Window {
 	width: 1280
 	height: 700
 	minimumWidth: 800
-	color: "#252525"
+	color: Reimei.backgroundColor
 
 	readonly property var dummyData: '
 		{
@@ -55,9 +56,9 @@ Window {
 		id: "titlebar"
 		width: parent.width
 		height: 35
-		color: "#01FF0000"
+		color: Reimei.titlebarColor
 		border.width: 1
-		border.color: "#0fffffff"
+		border.color: Reimei.borderColor
 
 	    Row {
 	    	width: 85 - 16
@@ -67,7 +68,7 @@ Window {
 
 	    	Text {
 	    		text: "Reimei"
-	    		color: "#ffffff"
+	    		color: Reimei.textColor
 	    		font.pixelSize: 12
 	    		font.family: instrumentSans.name
 				anchors.verticalCenter: parent.verticalCenter
@@ -95,7 +96,7 @@ Window {
 
 	    		Text {
 	    			text: "File"
-	    			color: "#ffffff"
+	    			color: Reimei.textColor
 	    			font.pixelSize: 12
 	    			font.family: plusJakarta.name
 					anchors.verticalCenter: parent.verticalCenter
@@ -110,7 +111,7 @@ Window {
 
 	    		Text {
 	    			text: "Edit"
-	    			color: "#ffffff"
+	    			color: Reimei.textColor
 	    			font.pixelSize: 12
 	    			font.family: plusJakarta.name
 					anchors.verticalCenter: parent.verticalCenter
@@ -125,7 +126,7 @@ Window {
 
 	    		Text {
 	    			text: "View"
-	    			color: "#ffffff"
+	    			color: Reimei.textColor
 	    			font.pixelSize: 12
 	    			font.family: plusJakarta.name
 					anchors.verticalCenter: parent.verticalCenter
@@ -136,7 +137,7 @@ Window {
 
 		Text {
 			text: "Project Name"
-			color: "#ffffff"
+			color: Reimei.textColor
 			font.pixelSize: 12
 			font.family: instrumentSans.name
 			anchors.verticalCenter: parent.verticalCenter
@@ -179,7 +180,7 @@ Window {
 
 		    	Text {
 		    		text: "Export"
-		    		color: "#ffffff"
+		    		color: Reimei.textColor
 		    		font.pixelSize: 12
 		    		font.family: plusJakarta.name
 		    	}
@@ -232,7 +233,7 @@ Window {
 
 				AssetLibrary { id: assetLibrary }
 
-				Rectangle { width: 1; height: parent.height; color: "#0fffffff"; x: parent.width + 10 } 
+				Rectangle { width: 1; height: parent.height; color: Reimei.borderColor; x: parent.width + 10 } 
 
 			}
 
@@ -262,7 +263,7 @@ Window {
 				SplitView.minimumWidth: 300
 				color: "#00000000"
 
-				Rectangle { width: 1; height: parent.height; color: "#0fffffff"; x: -10 } 
+				Rectangle { width: 1; height: parent.height; color: Reimei.borderColor; x: -10 } 
 
 			}
 		}
@@ -273,7 +274,7 @@ Window {
 
 			color: "#00000000"
 
-			Rectangle { width: parent.width; height: 1; color: "#0fffffff"; y: -5 } 
+			Rectangle { width: parent.width; height: 1; color: Reimei.borderColor; y: -5 } 
 
 			Timeline {}
 

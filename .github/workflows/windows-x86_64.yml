@@ -1,0 +1,38 @@
+name: Windows x86_64
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "6.8.3"
+          arch: "win64_msvc2022_64"
+          modules: "qt5compat"
+
+      - name: Build
+        run: cargo build --release --verbose
+
+      - name: Deploy Qt
+        run: |
+          windeployqt --release --qmldir . target\release\reimei.exe
+
+      - name: Upload
+        uses: actions/upload-artifact@v7
+        with:
+          name: reimei-windows-x86_64
+          path: target\release\
+          archive: false

@@ -1,8 +1,8 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Window 2.15
-import QtQuick.Layouts 1.15
-import QtGraphicalEffects 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Window
+import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
 
 
 Window {
@@ -223,17 +223,20 @@ Window {
 				color: "#00000000"
 			}
 
+			// Asset Library
 			Rectangle {
 				// SplitView.fillWidth: true
 				SplitView.fillHeight: true
 				SplitView.minimumWidth: 300
 				color: "#00000000"
 
+				AssetLibrary { id: assetLibrary }
+
 				Rectangle { width: 1; height: parent.height; color: "#0fffffff"; x: parent.width + 10 } 
 
 			}
 
-
+			// Player Viewport
 			Rectangle {
 				SplitView.fillWidth: true
 				SplitView.fillHeight: true
@@ -241,14 +244,18 @@ Window {
 				color: "#00000000"
 				border.width: 1
 				border.color: "#01ffffff"
+				clip: true
+
 
 			    gradient: Gradient {
 			        GradientStop { position: 0.0; color: "#00000000" }
 			        GradientStop { position: 1.0; color: "#26000000" }
 			    }
 
+			    Viewport { id: viewport ; }
 			}
 
+			// Inspector
 			Rectangle {
 				// SplitView.fillWidth: true
 				SplitView.fillHeight: true

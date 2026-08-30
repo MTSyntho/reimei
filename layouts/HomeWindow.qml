@@ -1,8 +1,8 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Window 2.15
-import QtQuick.Layouts 1.15
-import QtGraphicalEffects 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Window
+import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
 import "."
 
 Window {
@@ -110,7 +110,7 @@ Window {
 				id: thunbnailSrc
 				width: mask.width - 2
 				height: mask.height - 2
-				source: "../assets/gradient.png"
+				// source: "../assets/gradient.png"
 				fillMode: Image.PreserveAspectCrop
 				visible: false
 			}

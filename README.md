@@ -19,16 +19,16 @@ _To enable others to create._
 _Because editing shouldn't cost you a fortune._
 
 ## 💻 Features:
-- Lightweight by design
-- Clip trimming and manipulation - ( WIP )
-- Basic Audio manipulation - ( WIP )
-- Custom Shader Support ( Skia Shaders ) - ( WIP )
-- Non-linear video editing - ( WIP )
-- Custom Color Schemes
-- Convenient Subtitle System - ( WIP )
+- [X] Lightweight by design
+- [ ] Clip trimming and manipulation
+- [ ] Basic Audio manipulation
+- [ ] Custom Shader Support ( Skia Shaders )
+- [ ] Non-linear video editing
+- [x] Custom Color Schemes
+- [ ] Convenient Subtitle System
 
 ## 🧐 Why Reimei?:
-Most modern video editing software demand powerful hardware just to provide basic functionality. For many aspiring creators, that hardware just isn't an options...
+Most modern video editing software demand powerful hardware just to provide basic functionality. For many aspiring creators, that hardware just isn't an option...
 
 Reimei aims to bridge that gap. It isn't necessarily built to outright replace or compete with editors like Adobe Premiere or Davinci Resolve. Rather, it focuses on making video editing more accessible to others who may not have the luxury of modern hardware. ( Such as myself )
 Regardless of whether you own a powerful workstation laptop, or an old machine you've had for years, you should still be given the opportunity to create something. 
@@ -39,4 +39,4 @@ It isn't fair to want to create and to be limited by what you have. It just isn'
 
 _Note: Reimei ( 黎明 ) means daybreak, otherwise dawn. The beginning of a new day, in this case it is the beginning of a new journey._
 
-_It also coincidentally matches the album, [Daybreak](https://vocadb.net/Al/1085) by [samfree](https://vocadb.net/Ar/52). <3 - May he rest in peace..._
+_It also coincidentally matches the album, [Daybreak](https://vocadb.net/Al/1085) by [samfree](https://vocadb.net/Ar/52). <3 // May he rest in peace..._

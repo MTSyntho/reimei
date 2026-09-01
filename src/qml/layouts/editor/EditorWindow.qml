@@ -25,13 +25,20 @@ Window {
 					{
 						"clipName": "Clip1.mp4",
 						"clipPosition": 0.4,
-						"clipDuration": 3
+						"clipDuration": 180
 				  	},
 					{
 						"clipName": "Clip the second coming.mp4",
 						"clipPosition": 12,
 						"clipDuration": 7
 				  	}
+				],
+				[
+					{
+						"clipName": "osszzu.mp4",
+						"clipPosition": 3.5,
+						"clipDuration": 13
+					}
 				],
 				[
 					{
@@ -78,6 +85,11 @@ Window {
 
     	function skipForward() {
     		Global.currentTime += 3
+    	}
+
+    	function getFormattedTime(seconds) {
+    		// return Math.floor(seconds / 60) + ":" + Math.floor(seconds % 60)
+    		return ("0" + Math.floor(seconds / 3600)).slice(-2) + ":" + ("0" + Math.floor( ( seconds % 3600 ) / 60 )).slice(-2) + ":" + ("0" + Math.floor(seconds % 60)).slice(-2)
     	}
 
     }

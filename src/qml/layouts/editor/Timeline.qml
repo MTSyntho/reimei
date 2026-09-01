@@ -35,6 +35,12 @@ Rectangle {
 		}
 	}
 
+	// Item {
+	// 	id: videoTime
+	// 	function
+
+	// }
+
 	Column {
 		width: parent.width
 		height: parent.height
@@ -55,6 +61,13 @@ Rectangle {
 					if (!pressed) { timeRuler.requestPaint() }
 				}
 			}
+
+			Text {
+				id: displayVideoTime
+				text: playbackState.getFormattedTime(Global.currentTime) + " / " + playbackState.getFormattedTime(Global.projectLength)
+				anchors.centerIn: parent
+				color: Reimei.textColor
+			}
 		}
 
 		Rectangle { width: parent.width; height: 1; color: Reimei.borderColor; y: -5 } 
@@ -68,9 +81,13 @@ Rectangle {
 				id: timelineViewport
 				width: parent.width
 				height: parent.height
+				flickableDirection: Flickable.HorizontalFlick
+				// boundsBehavior: Flickable.DragOverBounds
+				clip: true
 
 				// contentWidth: childrenRect.width
 				contentWidth: ( ( Global.projectLength + 2 ) * clipLength ) * zoom // 10 seconds
+				contentHeight: timelineColumn.height
 
 				TimeRuler { id: timeRuler }
 

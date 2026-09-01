@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
+import QtQuick.Dialogs
 import "AssetLibrary"
 import "../." 1.0
 
@@ -72,6 +73,10 @@ Column {
 	Item {
 		width: assetLibrary.width
 		height: parent.height - 40
+
+		FileDialog {
+			id: assetLibraryFileDialog
+		}
 
 		GridView {
 			model: testAsset

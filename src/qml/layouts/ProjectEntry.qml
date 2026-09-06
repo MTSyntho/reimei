@@ -70,6 +70,7 @@ Button {
 			spacing: 2
 			Text {
 				text: name
+				elide: Text.ElideRight
 				width: 166
 				font.pixelSize: 14
 				font.family: plusJakarta.name

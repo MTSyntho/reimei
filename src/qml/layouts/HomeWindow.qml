@@ -89,8 +89,7 @@ Window {
 					color: Reimei.textColor
 					font.pixelSize: 10
 					font.family: plusJakarta.name
-					anchors.verticalCenter: parent.verticalCenter
-					anchors.horizontalCenter: parent.horizontalCenter
+					anchors.centerIn: parent
 
 				}
 			}

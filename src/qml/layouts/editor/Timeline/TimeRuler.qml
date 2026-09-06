@@ -1,4 +1,4 @@
-import QtQuick 2.15
+import QtQuick
 import "../../." 1.0
 
 
@@ -22,7 +22,7 @@ Canvas {
 
         for ( var i = ( timelineViewport.contentX / clipLength ) ; i < timelineViewport.contentWidth ; i++) {
             var second = ( i * clipLength ) * rulerZoom
-            console.log(parent.x)
+            // console.log(parent.x)
 	        ctx.beginPath()
 			ctx.moveTo(second, 0)
 			ctx.lineTo(second, 10)

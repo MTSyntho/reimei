@@ -28,6 +28,8 @@ Item {
 			height: mask.height - 2
 			fillMode: Image.PreserveAspectCrop
 			source: preview
+			asynchronous: true
+			cache: true
 			visible: false
 
 			Rectangle {

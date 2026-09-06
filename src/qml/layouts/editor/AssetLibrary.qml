@@ -16,6 +16,29 @@ Column {
 	clip: true
 
 	Item {
+		id: functionsAL
+
+		function addResource(file) {
+					const extension = file.toString().split(".").pop().toLowerCase();
+					var fileFormat = "";
+
+				    if (["mp4", "mkv", "webm", "avi", "mov", "m4v", "3gp"].includes(extension))
+				        fileFormat = "video"
+
+				    if (["png", "jpg", "jpeg", "webp", "svg"].includes(extension))
+				        fileFormat = "image"
+
+				    if (["mp3", "wav", "ogg", "opus", "flac", "m4a"].includes(extension))
+				        fileFormat = "audio"
+
+			        testAsset.append({
+			            assetName: file.toString().split("/").pop(),
+			            assetType: fileFormat,
+			            assetPreview: file.toString()
+			        })			
+		}
+	}
+	Item {
 		width: parent.width
 		height: 31
 		Row {
@@ -32,7 +55,7 @@ Column {
 			}
 
 			Text {
-				text: "Master > gameplay clips > day1"
+				text: "Master"
 				font.family: plusJakarta.name
 				color: Reimei.textColor
 				font.pixelSize: 12
@@ -75,6 +98,20 @@ Column {
 		width: assetLibrary.width
 		height: parent.height - 40
 
+		DropArea {
+			id: assetLibraryDropArea
+			width: parent.width
+			height: parent.height
+
+			keys: ["text/uri-list"]
+
+			onDropped: function(drop) {
+				for (let url of drop.urls) {
+					functionsAL.addResource(url)
+				}
+			}
+		}
+
 		FileDialog {
 			id: assetLibraryFileDialog
 			acceptLabel: "Import"
@@ -88,23 +125,7 @@ Column {
 
 			onAccepted: {
 			    for (const file of selectedFiles) {
-					const extension = file.toString().split(".").pop().toLowerCase();
-					var fileFormat = "";
-
-				    if (["mp4", "mkv", "webm", "avi", "mov", "m4v", "3gp"].includes(extension))
-				        fileFormat = "video"
-
-				    if (["png", "jpg", "jpeg", "webp", "svg"].includes(extension))
-				        fileFormat = "image"
-
-				    if (["mp3", "wav", "ogg", "opus", "flac", "m4a"].includes(extension))
-				        fileFormat = "audio"
-
-			        testAsset.append({
-			            assetName: file.toString().split("/").pop(),
-			            assetType: fileFormat,
-			            assetPreview: file.toString()
-			        })
+			    	functionsAL.addResource(file)
 			    }
 			}
 		}

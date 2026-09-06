@@ -4,6 +4,7 @@ import QtQuick.Window
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import "../." 1.0
+import "AssetLibrary"
 
 
 Window {
@@ -93,6 +94,7 @@ Window {
     	}
 
     }
+
 
 	Rectangle {
 		id: "titlebar"
@@ -322,6 +324,5 @@ Window {
 
 		}
 	}
-
 
 }

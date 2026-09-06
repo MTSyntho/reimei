@@ -114,6 +114,15 @@ Rectangle {
 
 	}
 
+
+	DropArea {
+		id: timelineDropArea
+		width: parent.width
+		height: parent.height
+
+		keys: ["application/x-reimei-asset"]
+	}
+
 	Component.onCompleted: {
 		var projectData = JSON.parse(dummyData);
 		var longestEndTime = 0;

@@ -13,6 +13,13 @@ Item {
 	width: 146
 	height: 82
 
+	Component {
+		id: assetPreview
+		AssetPreview {
+			image: ""
+		}
+	}
+
 	Column {
 		spacing: 8
 		width: parent.width
@@ -87,6 +94,17 @@ Item {
 		width: parent.width
 		height: parent.height
 		hoverEnabled: true
+		acceptedButtons: Qt.LeftButton | Qt.RightButton
+
+		onPressAndHold: function(mouse) {
+			if (mouse.button === Qt.RightButton) {
+				var previewWindow = assetPreview.createObject()
+				previewWindow.image = preview
+				previewWindow.x = mouse.x + 2
+				previewWindow.y = mouse.y + 2
+				previewWindow.show()
+			}
+		}
 
 	}
 }

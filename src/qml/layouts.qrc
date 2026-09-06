@@ -10,6 +10,7 @@
         <file>layouts/editor/EditorWindow.qml</file>
         <file>layouts/editor/AssetLibrary.qml</file>
         <file>layouts/editor/AssetLibrary/AssetEntry.qml</file>
+        <file>layouts/editor/AssetLibrary/AssetPreview.qml</file>
         <file>layouts/editor/Viewport.qml</file>
         <file>layouts/editor/Viewport/PlaybackControls.qml</file>
         <file>layouts/editor/Timeline.qml</file>

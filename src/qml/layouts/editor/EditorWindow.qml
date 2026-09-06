@@ -61,6 +61,13 @@ Window {
         source: "../../assets/fonts/PlusJakartaSans/PlusJakartaSans-VariableFont_wght.ttf" 
     }  
 
+	Component {
+		id: assetPreviewComponent
+		AssetPreview {
+			image: ""
+		}
+	}
+
     Item {
     	id: playbackState
 

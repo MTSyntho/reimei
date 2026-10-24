@@ -62,12 +62,19 @@ Rectangle {
 				}
 			}
 
-			Text {
-				id: displayVideoTime
-				text: playbackState.getFormattedTime(Global.currentTime) + " / " + playbackState.getFormattedTime(Global.projectLength)
-				anchors.centerIn: parent
-				color: Reimei.textColor
-			}
+			// Text {
+			// 	id: displayVideoTime
+			// 	// text: playbackState.getFormattedTime(Global.currentTime) + " / " + playbackState.getFormattedTime(Global.projectLength)
+			// 	text: "jikan" // im trying to fix the strange crashes from playback. apparently this text element is the cause?
+			// 	anchors.centerIn: parent
+			// 	color: Reimei.textColor
+			// }
+
+Text {
+    id: displayVideoTime
+    text: playbackState.getFormattedTime(Global.currentTime)
+}
+			
 		}
 
 		Rectangle { width: parent.width; height: 1; color: Reimei.borderColor; y: -5 } 
@@ -85,11 +92,11 @@ Rectangle {
 				// boundsBehavior: Flickable.DragOverBounds
 				clip: true
 
-				// contentWidth: childrenRect.width
-				contentWidth: ( ( Global.projectLength + 2 ) * clipLength ) * zoom // 10 seconds
+				// contentWidth: 4096
+				contentWidth: ( ( Global.projectLength + 2 ) * clipLength ) * zoom
 				contentHeight: timelineColumn.height
 
-				TimeRuler { id: timeRuler }
+				// TimeRuler { id: timeRuler }
 
 				Column {
 					y: 4 + 20
@@ -101,13 +108,13 @@ Rectangle {
 
 				PlayerHead { id: playerHead }
 
-				ScrollBar.horizontal: ScrollBar {
-					policy: ScrollBar.AlwaysOn
-				}
+				// ScrollBar.horizontal: ScrollBar {
+				// 	policy: ScrollBar.AlwaysOn
+				// }
 
-				ScrollBar.vertical: ScrollBar {
-					policy: ScrollBar.AlwaysOn
-				}
+				// ScrollBar.vertical: ScrollBar {
+				// 	policy: ScrollBar.AlwaysOn
+				// }
 			}
 	
 		}
@@ -123,6 +130,17 @@ Rectangle {
 		keys: ["application/x-reimei-asset"]
 	}
 
+// Component.onCompleted: {
+//     var testParent = Qt.createQmlObject(
+//         'import QtQuick; Item { width: 14592; height: 200 }',
+//         timelineViewport.parent
+//     );
+
+//     var track = trackPlaceholder.createObject(testParent);
+
+//     if (track)
+//         console.log("Track created outside Flickable:", track.width);
+// }
 	Component.onCompleted: {
 		var projectData = JSON.parse(dummyData);
 		var longestEndTime = 0;
@@ -147,6 +165,13 @@ Rectangle {
 		}
 
 	    Global.projectLength = longestEndTime;
+	    // Global.projectLength = 100;
+
+	    console.log("projectLength:", Global.projectLength)
+	    console.log("clipLength:", clipLength)
+	    console.log("zoom:", zoom)
+	    console.log("contentWidth:", timelineViewport.contentWidth)
+	    console.log("timelineColumn.width:", timelineColumn.width)
 
 	}	
 

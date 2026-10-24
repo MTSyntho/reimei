@@ -26,7 +26,7 @@ Window {
 					{
 						"clipName": "Clip1.mp4",
 						"clipPosition": 0.4,
-						"clipDuration": 180
+						"clipDuration": 3
 				  	},
 					{
 						"clipName": "Clip the second coming.mp4",

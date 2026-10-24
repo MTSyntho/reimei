@@ -29,7 +29,7 @@ Item {
 			fillMode: Image.PreserveAspectCrop
 			source: preview
 			asynchronous: true
-			cache: true
+			cache: false
 			visible: false
 
 			Rectangle {

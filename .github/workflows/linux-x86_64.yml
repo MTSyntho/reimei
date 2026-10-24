@@ -18,7 +18,12 @@ jobs:
     - name: Install Dependencies
       run: |
         apt update
-        apt install -y qt6-base-dev qt6-declarative-dev qt6-5compat-dev rustup clang \ 
+        apt install -y \
+          qt6-base-dev \
+          qt6-declarative-dev \
+          qt6-5compat-dev \
+          rustup \
+          clang \
           pkg-config \
           libfreetype-dev \
           libfontconfig-dev \

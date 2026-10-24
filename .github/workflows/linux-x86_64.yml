@@ -24,6 +24,7 @@ jobs:
           qt6-5compat-dev \
           rustup \
           clang \
+          curl \
           pkg-config \
           libfreetype-dev \
           libfontconfig-dev \

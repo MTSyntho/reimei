@@ -62,19 +62,14 @@ Rectangle {
 				}
 			}
 
-			// Text {
-			// 	id: displayVideoTime
-			// 	// text: playbackState.getFormattedTime(Global.currentTime) + " / " + playbackState.getFormattedTime(Global.projectLength)
-			// 	text: "jikan" // im trying to fix the strange crashes from playback. apparently this text element is the cause?
-			// 	anchors.centerIn: parent
-			// 	color: Reimei.textColor
-			// }
-
-Text {
-    id: displayVideoTime
-    text: playbackState.getFormattedTime(Global.currentTime)
-}
-			
+			Text {
+				id: displayVideoTime
+				text: playbackState.getFormattedTime(Global.currentTime) + " / " + playbackState.getFormattedTime(Global.projectLength)
+				// text: "jikan" // im trying to fix the strange crashes from playback. apparently this text element is the cause? ( update: check HomeWindow )
+				anchors.centerIn: parent
+				color: Reimei.textColor
+			}
+		
 		}
 
 		Rectangle { width: parent.width; height: 1; color: Reimei.borderColor; y: -5 } 

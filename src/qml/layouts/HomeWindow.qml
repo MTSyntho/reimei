@@ -13,6 +13,14 @@ Window {
 	width: 960
 	height: 720
 	color: Reimei.backgroundColor
+	
+	// apparently the editor crashed during playback due to the timestamp. somehow its because a reference to the editor is
+	// never stored since the main window gets nuked... smth along those lines. qt group you will have to pay bro.
+	// ( i didnt even know qml had a garbage collector.. does it really?? )
+	// whatever man, as tsoding said probably. "if it works, it's a good code"... maybe excl. my codebase actually-
+	property var editorWindowInstance: null
+
+
 
 	// LoadFonts {}
 

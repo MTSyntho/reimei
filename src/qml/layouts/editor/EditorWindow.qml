@@ -331,5 +331,16 @@ Window {
 
 		}
 	}
+onVisibleChanged: {
+    console.warn("[Window] visible:", visible)
+}
+
+onClosing: {
+    console.warn("[Window] closing")
+}
+
+Component.onDestruction: {
+    console.warn("[Window] destroyed")
+}
 
 }

@@ -20,8 +20,14 @@ Button {
 	}
 
 	onClicked: {
-		editorWindow.createObject().show()
-		mainWindow.close()
+	    editorWindowInstance = editorWindow.createObject()
+
+	    if (editorWindowInstance) {
+	        editorWindowInstance.show()
+	        mainWindow.close()
+	    } else {
+	        console.error("Failed to create editor:", editorWindow.errorString())
+	    }
 	}
 
 

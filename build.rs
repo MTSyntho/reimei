@@ -1,18 +1,16 @@
-use cxx_qt_build::CxxQtBuilder;
+use cxx_qt_build::{CxxQtBuilder, QmlFile, QmlModule};
 
 fn main() {
-    CxxQtBuilder::new()
-        // Link Qt's Network library
-        // - Qt Core is always linked
-        // - Qt Gui is linked by enabling the qt_gui Cargo feature (default).
-        // - Qt Qml is linked by enabling the qt_qml Cargo feature (default).
-        // - Qt Qml requires linking Qt Network on macOS
-        .qt_module("Network")
-        // Generate C++ from the `#[cxx_qt::bridge]` module
-        .file("src/cxxqt_object.rs")
-        // Generate C++ code from the .qrc file with the rcc tool
-        // https://doc.qt.io/qt-6/resources.html
-        .qrc("src/qml/layouts.qrc")
-        .qrc("src/qml/assets.qrc")
-        .build();
+	CxxQtBuilder::new_qml_module(
+		QmlModule::new("Reimei").qml_files([
+			QmlFile::from("src/qml/layouts/imports/Reimei/Reimei.qml")
+				.singleton(true),
+			QmlFile::from("src/qml/layouts/imports/Reimei/Global.qml")
+				.singleton(true),
+		]),
+	)
+	.file("src/backend.rs")
+	.qrc("src/qml/layouts.qrc")
+	.qrc("src/qml/assets.qrc")
+	.build();
 }

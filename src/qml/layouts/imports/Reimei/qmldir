@@ -1,4 +1,4 @@
 module Reimei
 
-singleton Reimei 1.0 Theme.qml
+singleton Reimei 1.0 Reimei.qml
 singleton Global 1.0 Global.qml

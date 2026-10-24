@@ -4,8 +4,8 @@ import QtQuick.Window
 import QtQuick.Layouts
 import QtQuick.Dialogs
 import QtCore
+import Reimei
 import "AssetLibrary"
-import "../." 1.0
 
 Column {
 	x: 25

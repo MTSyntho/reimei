@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
+import Reimei
 import "Timeline"
-import "../." 1.0
 
 Rectangle {
 

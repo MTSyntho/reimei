@@ -1,6 +1,5 @@
 import QtQuick
-import "../../." 1.0
-
+import Reimei
 
 Canvas {
 	property real rulerZoom: zoom

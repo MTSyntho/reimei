@@ -3,7 +3,8 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
-import "." 1.0
+import Reimei 
+// import "." 1.0
 import "editor"
 
 Window {
@@ -13,7 +14,7 @@ Window {
 	width: 960
 	height: 720
 	color: Reimei.backgroundColor
-	
+
 	// apparently the editor crashed during playback due to the timestamp. somehow its because a reference to the editor is
 	// never stored since the main window gets nuked... smth along those lines. qt group you will have to pay bro.
 	// ( i didnt even know qml had a garbage collector.. does it really?? )

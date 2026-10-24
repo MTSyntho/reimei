@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
+import Reimei
 import "Viewport"
-import "../." 1.0
 
 Column {
 	width: parent.width

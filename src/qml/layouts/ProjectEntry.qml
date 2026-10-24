@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
-import "." 1.0
+import Reimei
 
 Button {
 	property string name: "Project Name"

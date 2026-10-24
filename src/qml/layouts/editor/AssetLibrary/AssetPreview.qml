@@ -1,5 +1,5 @@
 import QtQuick
-import "../../." 1.0
+import Reimei
 
 Rectangle {
 	property var image: 0

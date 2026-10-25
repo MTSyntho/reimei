@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls.Basic
 import QtQuick.Window
 import QtQuick.Layouts
 import Reimei
@@ -91,7 +91,15 @@ Rectangle {
 				contentWidth: ( ( Global.projectLength + 2 ) * clipLength ) * zoom
 				contentHeight: timelineColumn.height
 
-				// TimeRuler { id: timeRuler }
+				TimeRuler { id: timeRuler }
+
+				Connections {
+				    target: timelineViewport
+
+				    function onContentXChanged() {
+				        timeRuler.requestPaint()
+				    }
+				}
 
 				Column {
 					y: 4 + 20

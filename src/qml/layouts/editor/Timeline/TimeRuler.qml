@@ -8,19 +8,23 @@ Canvas {
     x: timelineViewport.contentX
     height: 20
 
+    onRulerZoomChanged: requestPaint()
+
     onPaint: {
         var ctx = getContext("2d");
         ctx.strokeStyle = Reimei.timelineTimeRulerLineColor
         ctx.fillStyle = Reimei.timelineTimeRulerTextColor
         ctx.font = "8px sans-serif"
 
-        // var startPos = Math.floor(timelineViewport.contentX / clipLength)
-        // var endPos = Math.ceil(timelineViewport.contentX + parent.width) / clipLength
+        var startPos = Math.floor( timelineViewport.contentX / ( clipLength * rulerZoom ) )
+
+        var endPos = Math.ceil( ( timelineViewport.contentX + width ) / ( clipLength * rulerZoom ) )
 
         ctx.clearRect(0, 0, width, height)
 
-        for ( var i = ( timelineViewport.contentX / clipLength ) ; i < timelineViewport.contentWidth ; i++) {
-            var second = ( i * clipLength ) * rulerZoom
+
+        for ( var i = startPos ; i <= endPos ; i++) {
+            var second = i * ( clipLength * rulerZoom ) - timelineViewport.contentX
             // console.log(parent.x)
 	        ctx.beginPath()
 			ctx.moveTo(second, 0)
@@ -28,12 +32,12 @@ Canvas {
 			ctx.stroke()        
         }
 
-	    // if (!zoomSlider.pressed) {
-	    //     for ( var i = 0 ; i < timelineViewport.contentWidth ; i++) {
-	    //     	var second = ( i * clipLength ) * rulerZoom        
-		// 		ctx.fillText(i, second + 4, 8)	
-	    //     }    	
-	    // }
+	    if (!zoomSlider.pressed) {
+	        for ( var i = startPos ; i <= endPos ; i++) {
+                var second = i * ( clipLength * rulerZoom ) - timelineViewport.contentX
+				ctx.fillText(i, second + 4, 8)	
+	        }    	
+	    }
     }
 
     MouseArea {

@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls.Basic
 import QtQuick.Window
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
@@ -45,7 +45,7 @@ Window {
 					{
 						"clipName": "osu.mp4",
 						"clipPosition": 3.5,
-						"clipDuration": 13
+						"clipDuration": 13000
 					}
 				]
 			]

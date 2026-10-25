@@ -122,12 +122,35 @@ Rectangle {
 
 				}
 
+				PinchHandler {
+				    target: null
+
+				    onScaleChanged: function(delta) {
+				    	zoomSlider.value = Math.max( zoomSlider.from, Math.min( zoomSlider.to, zoomSlider.value * delta ) )
+				    }
+				}
+
 				MouseArea {
 					acceptedButtons: Qt.RightButton
 			        anchors.fill: parent
 			        // preventStealing: true
 
 			        property point dragStart: Qt.point(0, 0)
+
+				    onWheel: function(event) {
+				        if (!(event.modifiers & Qt.ControlModifier)) {
+				            event.accepted = false
+				            return
+				        }
+
+				    	// var factor = event.angleDelta.y / 120
+				    	var factor = Math.pow( 1.1, event.angleDelta.y / 512 )
+
+				    	zoomSlider.value = Math.max( zoomSlider.from, Math.min( zoomSlider.to, zoomSlider.value * factor ) )
+
+				    	 console.log("New slider value:", zoomSlider.value)
+				    	event.accepted = true
+				    }
 
 			        onPressed: function(mouse) {
 			        	dragStart = Qt.point(mouse.x, mouse.y)

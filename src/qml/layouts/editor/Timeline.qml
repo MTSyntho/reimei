@@ -75,7 +75,7 @@ Rectangle {
 		Rectangle { width: parent.width; height: 1; color: Reimei.borderColor; y: -5 } 
 
 		Rectangle {
-			color: Reimei.timelineColor
+			color: Reimei.timelineColor 
 			width: parent.width
 			height: parent.height - 36
 
@@ -110,6 +110,85 @@ Rectangle {
 				}
 
 				PlayerHead { id: playerHead }
+
+				Rectangle {
+					id: selectionBox
+					visible: false
+
+					color: "#20ffffff"
+					border.color: "#40ffffff"
+					border.width: 1
+					radius: 6
+
+				}
+
+				MouseArea {
+					acceptedButtons: Qt.RightButton
+			        anchors.fill: parent
+			        // preventStealing: true
+
+			        property point dragStart: Qt.point(0, 0)
+
+			        onPressed: function(mouse) {
+			        	dragStart = Qt.point(mouse.x, mouse.y)
+
+			        	selectionBox.visible = true
+			        	selectionBox.x = mouse.x
+			        	selectionBox.y = mouse.y
+			        	selectionBox.width = 0
+			        	selectionBox.height = 0
+			        }
+
+			        onPositionChanged: function(mouse) {
+			        	// selectionBox.width = selectionBox.x + mouse.x
+			        	// selectionBox.height = selectionBox.y + mouse.y
+
+				        selectionBox.x = Math.min(dragStart.x, mouse.x)
+				        selectionBox.y = Math.min(dragStart.y, mouse.y)
+
+				        selectionBox.width = Math.abs(mouse.x - dragStart.x) // why didnt they teach me this in class yet... ( abs func )
+				        selectionBox.height = Math.abs(mouse.y - dragStart.y)
+
+
+						if ( selectionBox.x + selectionBox.width > ( timelineViewport.contentX + timelineViewport.width ))  {
+							timelineViewport.contentX += 10
+						} else if ( selectionBox.x < timelineViewport.contentX ) {
+							timelineViewport.contentX -= 10
+						} 
+
+						function intersects(clip) {
+						    let topLeft = clip.mapToItem(
+						        timelineViewport.contentItem, 0, 0
+						    )
+
+						    let bottomRight = clip.mapToItem(
+						        timelineViewport.contentItem,
+						        clip.width, clip.height
+						    )
+
+						    let boxLeft = selectionBox.x
+						    let boxTop = selectionBox.y
+						    let boxRight = boxLeft + selectionBox.width
+						    let boxBottom = boxTop + selectionBox.height
+
+						    return topLeft.x < boxRight &&
+						           bottomRight.x > boxLeft &&
+						           topLeft.y < boxBottom &&
+						           bottomRight.y > boxTop
+						}
+
+						// for (i)
+			        }
+
+
+				    onReleased: function() {
+			        	selectionBox.visible = false
+			        	selectionBox.x = 0
+			        	selectionBox.y = 0
+			        	selectionBox.width = 0
+			        	selectionBox.height = 0
+				    }			        
+				}
 
 				ScrollBar.horizontal: ScrollBar {
 					policy: ScrollBar.AlwaysOn

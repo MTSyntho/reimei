@@ -111,9 +111,9 @@ Rectangle {
 
 				PlayerHead { id: playerHead }
 
-				// ScrollBar.horizontal: ScrollBar {
-				// 	policy: ScrollBar.AlwaysOn
-				// }
+				ScrollBar.horizontal: ScrollBar {
+					policy: ScrollBar.AlwaysOn
+				}
 
 				// ScrollBar.vertical: ScrollBar {
 				// 	policy: ScrollBar.AlwaysOn

@@ -4,7 +4,7 @@ import Reimei
 Canvas {
 	property real rulerZoom: zoom
     // id: timeRuler
-    width: window.width
+    width: timelineViewport.width
     x: timelineViewport.contentX
     height: 20
 
@@ -45,11 +45,11 @@ Canvas {
         preventStealing: true
 
         onClicked: function(mouse) {
-            Global.currentTime = mouse.x / ( clipLength * zoom )
+            Global.currentTime = ( mouse.x + timelineViewport.contentX ) / ( clipLength * zoom )
         }
 
         onPositionChanged: function(mouse) {
-            Global.currentTime = mouse.x / ( clipLength * zoom )
+            Global.currentTime = ( mouse.x + timelineViewport.contentX ) / ( clipLength * zoom )
         }
     }
 }

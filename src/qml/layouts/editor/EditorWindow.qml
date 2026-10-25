@@ -45,7 +45,7 @@ Window {
 					{
 						"clipName": "osu.mp4",
 						"clipPosition": 3.5,
-						"clipDuration": 13000
+						"clipDuration": 13
 					}
 				]
 			]

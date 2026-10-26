@@ -9,6 +9,14 @@ Item {
 	width: parent.width
 	height: childrenRect.height
 
+	property bool isOddNumberedTrack // no idea what to name this... ;-; - basically alternate the color between different tracks.
+
+	Rectangle {
+		visible: isOddNumberedTrack
+		anchors.fill: parent
+		color: "#30000000"
+	}
+
 	ListModel {
 		id: trackModel
 	}

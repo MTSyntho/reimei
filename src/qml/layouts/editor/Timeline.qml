@@ -16,6 +16,8 @@ Rectangle {
 	// property real projectLength: Global.projectLength
 	// property real currentTime: Global.currentTime
 
+	property var selectedClips
+
 	Component { id: trackDataPlaceholder ; ListModel {} }
 	Component { id: trackPlaceholder ; Track {} }
 
@@ -267,6 +269,7 @@ Rectangle {
 		    }
 
 			track.load(trackData);
+			track.isOddNumberedTrack = i % 2 !== 0;
 		}
 
 	    Global.projectLength = longestEndTime;

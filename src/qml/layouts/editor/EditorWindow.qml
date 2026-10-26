@@ -88,11 +88,13 @@ Window {
     	}
 
     	function skipBack() {
-    		Global.currentTime -= 3
+    		// Global.currentTime -= 3
+    		Global.currentTime = Math.max( 0, Global.currentTime - 3 )
     	}
 
     	function skipForward() {
-    		Global.currentTime += 3
+    		// Global.currentTime += 3
+    		Global.currentTime = Math.min( Global.projectLength, Global.currentTime + 3 )
     	}
 
     	function getFormattedTime(seconds) {

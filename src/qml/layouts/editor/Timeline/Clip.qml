@@ -14,9 +14,12 @@ Item {
 	property real initialPosition: 0
 	property real initialDuration: 0
 	property real initialMouseX: 0
-	property real initialScale: 1
+
+	property real initialDragPosition: 0
+	property real initialDragMouseX: 0
 
 	property bool isTrimLeft: false
+	property bool isDragged: false
 
 	readonly property real minimumDuration: ( 1 / Global.frameRate )
 
@@ -49,11 +52,10 @@ Item {
 				initialPosition = clip.position;
 				initialDuration = clip.duration;
 				initialMouseX = mapToItem( clip.parent, mouse.x, mouse.y ).x
-				initialScale = clipLength * zoom
 			}
 
 			onPositionChanged: function(mouse) {
-				let timeOffset = ( mapToItem( clip.parent, mouse.x, mouse.y ).x - clip.initialMouseX ) / clip.initialScale
+				let timeOffset = ( mapToItem( clip.parent, mouse.x, mouse.y ).x - clip.initialMouseX ) / ( clipLength * zoom )
 
 				let maxTrim = Math.max( 0, clip.initialDuration - clip.minimumDuration ) // prevent going below 1 frame in length
 				timeOffset = Math.max( -clip.initialPosition, Math.min( maxTrim, timeOffset ) )
@@ -80,11 +82,10 @@ Item {
 				initialPosition = clip.position
 				initialDuration = clip.duration
 				initialMouseX = mapToItem( clip.parent, mouse.x, mouse.y ).x
-				initialScale = clipLength * zoom
 			}
 
 			onPositionChanged: function(mouse) {
-				let timeOffset = ( mapToItem( clip.parent, mouse.x, mouse.y ).x - clip.initialMouseX ) / clip.initialScale
+				let timeOffset = ( mapToItem( clip.parent, mouse.x, mouse.y ).x - clip.initialMouseX ) / ( clipLength * zoom )
 
 				let maxTrim = Math.max( 0, clip.initialDuration - clip.minimumDuration ) // prevent going below 1 frame in length
 				timeOffset = Math.max( clip.minimumDuration - clip.initialDuration, timeOffset )
@@ -163,9 +164,40 @@ Item {
 			cursorShape: Qt.SizeHorCursor
 
         onClicked: function(mouse) {
-            isSelected = !isSelected
+        	// if (!isDragged) isSelected = !isSelected
+        	if (isDragged) {
+        		isDragged = false;
+        		return
+        	}
+
+        	isSelected = !isSelected
         }
 
-        onPositionChanged: 
+        onPressed: function(mouse) {
+        	isDragged = false;
+
+        	if (!isSelected) return;
+
+        	initialDragPosition = clip.position
+        	initialDragMouseX = mapToItem( clip.parent, mouse.x, mouse.y ).x
+        }
+
+        onPositionChanged: function(mouse) {
+        	if (!isSelected) return;
+
+
+	        let mouseDeltaX = mouseX - initialDragMouseX
+
+	        if ( Math.abs(mouseDeltaX) >= 5 ) isDragged = true // only triggers drag if dragged 5+ pixels.. unsure if ill keep this
+
+        	// isDragged = true;
+        	let timeOffset = ( mapToItem( clip.parent, mouse.x, mouse.y).x - initialDragMouseX ) / ( clipLength * zoom )
+        	clip.position = Math.max( 0, initialDragPosition + timeOffset )
+        }
+
+        // onReleased: {
+        // 	isDragged = false;
+        // }
+
     }	
 }

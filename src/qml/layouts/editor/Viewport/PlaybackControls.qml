@@ -8,6 +8,27 @@ Row {
 	height: 13
 	anchors.horizontalCenter: parent.horizontalCenter
 
+	Shortcut {
+	    sequence: "Space"
+	    onActivated: {
+	        if (isPlaying) {
+	            playbackState.pause()
+	        } else {
+	            playbackState.play()
+	        }
+	    }
+	}
+
+	Shortcut {
+	    sequence: "Left"
+	    onActivated: playbackState.skipBack()
+	}
+
+	Shortcut {
+	    sequence: "Right"
+	    onActivated: playbackState.skipForward()
+	}
+
 	Button {
 		width: 16
 		height: 10
